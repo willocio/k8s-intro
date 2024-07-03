@@ -32,8 +32,11 @@ argocd cluster list
 # criando o app no ArgoCD (atualização manual)
 argocd app create web-color --repo https://github.com/willocio/k8s-intro.git --path web --dest-server https://kubernetes.default.svc --dest-namespace web
 
-#atualizando o appno ArgoCD (atualização automatica)
+# atualizando o app no ArgoCD (atualização automatica)
 argocd app create web-color --repo https://github.com/willocio/k8s-intro.git --path web --dest-server https://kubernetes.default.svc --dest-namespace web --sync-policy auto --self-heal --upsert
+
+# criando app com arquivo yaml
+kubectl apply -f app-web-color.yml
 
 # listando o app
 argocd app list
