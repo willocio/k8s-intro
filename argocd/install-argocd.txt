@@ -16,3 +16,30 @@ kubectl apply -f ingress-traefik-argocd.yml
 # obter password do ArgoCD (user: admin)
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" |
 base64 -d && echo
+
+# logar no ArgoCD por comando
+argocd login argocd.local
+
+# obter context do cluster atual
+kubectl config current-context
+
+# add o cluster ao ArgoCD
+argocd cluster add <nome-do-context> --in-cluster
+
+# verificando se o cluster foi adicionado
+argocd cluster list
+
+# criando o app no ArgoCD (atualização manual)
+argocd app create web-color --repo https://github.com/willocio/k8s-intro.git --path web --dest-server https://kubernetes.default.svc --dest-namespace web
+
+#atualizando o appno ArgoCD (atualização automatica)
+argocd app create web-color --repo https://github.com/willocio/k8s-intro.git --path web --dest-server https://kubernetes.default.svc --dest-namespace web --sync-policy auto --self-heal --upsert
+
+# listando o app
+argocd app list
+
+# estado do app
+argocd app get web-color
+
+# sincronizando o app
+argocd app sync web-color
