@@ -55,7 +55,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: web-color.local
+  - host: webcolor.local
     http:
       paths:
       - path: /
