@@ -69,8 +69,4 @@ spec:
           service:
             name: svc-web-color
             port:
-<<<<<<< Updated upstream
-              number: 8080
-=======
               number: 8000
->>>>>>> Stashed changes
