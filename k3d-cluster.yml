@@ -5,12 +5,22 @@ metadata:
 servers: 1
 agents: 2
 ports:
-  - port: 8080:30000
-    nodeFilters:
-     - loadbalancer
   - port: 80:80
     nodeFilters:
       - loadbalancer
+
   - port: 443:443
+    nodeFilters:
+      - loadbalancer
+
+  - port: 8000:30000
+    nodeFilters:
+     - loadbalancer
+
+  - port: 9090:30001
+    nodeFilters:
+      - loadbalancer
+
+  - port: 3000:30002
     nodeFilters:
       - loadbalancer

@@ -42,7 +42,7 @@ spec:
   selector:
       app: web-color
   ports:
-    - port: 8080
+    - port: 8000
       protocol: TCP
       targetPort: 80
       nodePort: 30000
@@ -56,7 +56,7 @@ metadata:
   name: ingress-web
   namespace: web
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    traefik.ingress.kubernetes.io/router.pathmatcher: Path
 spec:
   ingressClassName: traefik
   rules:
@@ -69,4 +69,8 @@ spec:
           service:
             name: svc-web-color
             port:
+<<<<<<< Updated upstream
               number: 8080
+=======
+              number: 8000
+>>>>>>> Stashed changes
